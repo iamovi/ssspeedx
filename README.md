@@ -1,7 +1,7 @@
-![banner](https://ik.imagekit.io/iamovi/ssspeed.gif?updatedAt=1709548670273)
+![banner](https://ik.imagekit.io/iamovi/ssspeedx.gif?updatedAt=1709549055608)
 
 <div style="text-align: center;">
-  <h1>⚡ ssspeed ⚡</h1>
+  <h1>⚡ ssspeedx ⚡</h1>
 </div>
 
 Typing Bot with Node.js and robotjs,
@@ -40,15 +40,15 @@ npm install --global --production windows-build-tools
 xcode-select --install
 ```
 
-## ssspeed installation
+## ssspeedx installation
 
-We can now inatall sssped =>
+We can now inatall ssspeedx =>
 
 ```bash
-npm i -g ssspeed
+npm i -g ssspeedx
 ```
 
-⚠️ **Warning**: Please use `ssspeed` responsibly and avoid using it for spamming purposes.
+⚠️ **Warning**: Please use `ssspeedx` responsibly and avoid using it for spamming purposes.
 also add here use for entertainment  purpose.
 
 ## USages
@@ -56,7 +56,7 @@ also add here use for entertainment  purpose.
 To run the program =>
 
 ```bash
-ssspeed
+ssspeedx
 ```
 
 - next follow the actions
@@ -64,23 +64,23 @@ ssspeed
 To check the current version =>
 
 ```bash
-ssspeed -v
+ssspeedx -v
 ```
 Or,
 ```bash
-ssspeed --version
+ssspeedx --version
 ```
 
 To display help messages =>
 
 ```bash
-ssspeed --help
+ssspeedx --help
 ```
 
 Update package if available =>
 
 ```bash
-npm update -g ssspeed
+npm update -g ssspeedx
 ```
 
 ## License
