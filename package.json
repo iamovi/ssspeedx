@@ -1,0 +1,23 @@
+{
+  "name": "ssspeed",
+  "version": "1.0.0",
+  "description": "A simple CLI tool to automate typing and sending messages at regular intervals.",
+  "main": "speed.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "auto-type",
+    "type-bot",
+    "type-cli"
+  ],
+  "author": "Maruf OVi",
+  "license": "MIT",
+  "dependencies": {
+    "readline-sync": "^1.4.10",
+    "robotjs": "^0.6.0"
+  },
+  "bin": {
+    "ssspeed": "./ssspeed.js"
+  }
+}
