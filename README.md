@@ -1,4 +1,4 @@
-![banner](https://ik.imagekit.io/iamovi/ssspeedx.gif?updatedAt=1709549055608)
+![banner](https://ik.imagekit.io/iamovi/ssspeedx.gif?updatedAt=1709549612603)
 
 <div style="text-align: center;">
   <h1>⚡ ssspeedx ⚡</h1>
@@ -59,16 +59,12 @@ To run the program =>
 ssspeedx
 ```
 
-- next follow the actions
+- now follow the actions
 
 To check the current version =>
 
 ```bash
-ssspeedx -v
-```
-Or,
-```bash
-ssspeedx --version
+ssspeedx -v  Or,  ssspeedx --version
 ```
 
 To display help messages =>
@@ -81,6 +77,12 @@ Update package if available =>
 
 ```bash
 npm update -g ssspeedx
+```
+
+Uninstallation =>
+
+```bash
+npm uninstall -g ssspeedx
 ```
 
 ## License

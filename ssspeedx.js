@@ -1,8 +1,25 @@
 #!/usr/bin/env node
 
-const robot = require("robotjs");
+const fs = require('fs');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+const robot = require('robotjs');
 const readlineSync = require('readline-sync');
-const packageJson = require('./package.json'); // Adjust the path if necessary
+
+const packageJson = require('./package.json');
+
+async function checkForUpdate() {
+  try {
+    const { stdout } = await exec(`npm show ssspeedx version`);
+    const latestVersion = stdout.trim();
+    if (packageJson.version !== latestVersion) {
+      console.log(`Yo! ⚡ 'ssspeedx' v${latestVersion} is available. \nConsider updating the package using 'npm update -g ssspeedx'`);
+      console.log('');
+    }
+  } catch (error) {
+    console.error('Error checking for updates:', error.message);
+  }
+}
 
 function handleOptions(args) {
   if (args.includes('--help')) {
@@ -11,8 +28,10 @@ function handleOptions(args) {
   }
 
   if (args.includes('-v') || args.includes('--version')) {
-    displayVersion();
-    process.exit(0);
+    checkForUpdate().then(() => {
+      displayVersion();
+      process.exit(0);
+    });
   }
 }
 
@@ -27,7 +46,7 @@ function displayHelp() {
   console.log('\nExamples:');
   console.log('  ssspeedx -v        Display the version');
   console.log('  ssspeedx --help    Display this help message');
-  console.log('  ssspeedx          Start sending messages with the configured interval');
+  console.log('  ssspeedx           Start sending messages with the configured interval');
 }
 
 function displayVersion() {
@@ -38,17 +57,24 @@ let messageToSend = '';
 
 function typeAndEnter() {
   robot.typeString(messageToSend);
-  robot.keyTap("enter");
+  robot.keyTap('enter');
 }
 
 function editMessage() {
-  messageToSend = readlineSync.question('Type your new message to send: ');
+  messageToSend = readlineSync.question('Type your new message to send => ');
   askForOptions();
 }
 
 function runScript() {
+  console.log('Script running... \nPress Ctrl + C to stop.');
   const intervalId = setInterval(typeAndEnter, 1000);
-  console.log('Script running...');
+
+  // Handle Ctrl + C to stop the script
+  process.on('SIGINT', () => {
+    clearInterval(intervalId);
+    console.log('\nScript stopped.');
+    exitScript();
+  });
 }
 
 function exitScript() {
@@ -75,6 +101,11 @@ function askForOptions() {
   }
 }
 
+async function startScript() {
+  await checkForUpdate();
+  messageToSend = readlineSync.question('Type your message to send => ');
+  askForOptions();
+}
+
 handleOptions(process.argv.slice(2));
-messageToSend = readlineSync.question('Type your message to send: ');
-askForOptions();
+startScript();
