@@ -2,11 +2,37 @@
 
 const robot = require("robotjs");
 const readlineSync = require('readline-sync');
-const features = require('./files/features'); // Adjust the path if necessary
+const packageJson = require('./package.json'); // Adjust the path if necessary
 
-const args = process.argv.slice(2);
+function handleOptions(args) {
+  if (args.includes('--help')) {
+    displayHelp();
+    process.exit(0);
+  }
 
-features.handleOptions(args);
+  if (args.includes('-v') || args.includes('--version')) {
+    displayVersion();
+    process.exit(0);
+  }
+}
+
+function displayHelp() {
+  console.log('Usage:');
+  console.log('  ssspeedx [options]');
+  console.log('\nOptions:');
+  console.log('  -v, --version    Display the current version');
+  console.log('  --help           Display this help message');
+  console.log('\nDescription:');
+  console.log('  Simulate sending messages with a specified interval.');
+  console.log('\nExamples:');
+  console.log('  ssspeedx -v        Display the version');
+  console.log('  ssspeedx --help    Display this help message');
+  console.log('  ssspeedx          Start sending messages with the configured interval');
+}
+
+function displayVersion() {
+  console.log(`Version: ${packageJson.version}`);
+}
 
 let messageToSend = '';
 
@@ -17,7 +43,7 @@ function typeAndEnter() {
 
 function editMessage() {
   messageToSend = readlineSync.question('Type your new message to send: ');
-  features.askForOptions();
+  askForOptions();
 }
 
 function runScript() {
@@ -30,5 +56,25 @@ function exitScript() {
   process.exit(0);
 }
 
+function askForOptions() {
+  const options = ['Edit message', 'Run', 'Exit'];
+  const index = readlineSync.keyInSelect(options, 'Choose an option: ', { cancel: false });
+
+  switch (index) {
+    case 0:
+      editMessage();
+      break;
+    case 1:
+      runScript();
+      break;
+    case 2:
+      exitScript();
+      break;
+    default:
+      exitScript();
+  }
+}
+
+handleOptions(process.argv.slice(2));
 messageToSend = readlineSync.question('Type your message to send: ');
-features.askForOptions(editMessage, runScript, exitScript);
+askForOptions();

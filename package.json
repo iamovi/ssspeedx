@@ -1,6 +1,6 @@
 {
   "name": "ssspeedx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI tool to automate typing and sending messages at regular intervals.",
   "main": "ssspeedx.js",
   "scripts": {
