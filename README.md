@@ -49,7 +49,6 @@ npm i -g ssspeedx
 ```
 
 ⚠️ **Warning**: Please use `ssspeedx` responsibly and avoid using it for spamming purposes.
-also add here use for entertainment  purpose.
 
 ## USages
 

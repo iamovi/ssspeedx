@@ -13,7 +13,7 @@ async function checkForUpdate() {
     const { stdout } = await exec(`npm show ssspeedx version`);
     const latestVersion = stdout.trim();
     if (packageJson.version !== latestVersion) {
-      console.log(`Yo! ⚡ 'ssspeedx' v${latestVersion} is available. \nConsider updating the package using 'npm update -g ssspeedx'`);
+      console.log(`Yo! ⚡ 'ssspeedx' v${latestVersion} is available, \nConsider updating the package using 'npm update -g ssspeedx' :)`);
       console.log('');
     }
   } catch (error) {
@@ -42,7 +42,7 @@ function displayHelp() {
   console.log('  -v, --version    Display the current version');
   console.log('  --help           Display this help message');
   console.log('\nDescription:');
-  console.log('  Simulate sending messages with a specified interval.');
+  console.log('  Simulate sending messages with a regular interval.');
   console.log('\nExamples:');
   console.log('  ssspeedx -v        Display the version');
   console.log('  ssspeedx --help    Display this help message');
@@ -66,13 +66,13 @@ function editMessage() {
 }
 
 function runScript() {
-  console.log('Script running... \nPress Ctrl + C to stop.');
+  console.log('Script running 🚀... \nPress Ctrl + C to stop.');
   const intervalId = setInterval(typeAndEnter, 1000);
 
   // Handle Ctrl + C to stop the script
   process.on('SIGINT', () => {
     clearInterval(intervalId);
-    console.log('\nScript stopped.');
+    console.log('\nScript stopped :(');
     exitScript();
   });
 }
