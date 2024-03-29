@@ -21,7 +21,7 @@ The script uses the `robotjs` library to simulate keyboard input. Ensure that yo
 - On Linux, additional dependencies may be needed. Install them using:
 
 ```bash
-sudo apt-get install libxtst-dev libpng++-dev
+sudo apt-get install build-essential libxtst-dev libpng++-dev
 ```
 
 ### Windows -
