@@ -12,12 +12,10 @@ async function checkForUpdate() {
   try {
     const { stdout } = await exec(`npm show ssspeedx version`);
     const latestVersion = stdout.trim();
-    if (packageJson.version !== latestVersion) {
-      console.log(`Yo! ⚡ 'ssspeedx' v${latestVersion} is available, \nConsider updating the package using 'npm update -g ssspeedx' :)`);
-      console.log('');
-    }
+    return packageJson.version !== latestVersion;
   } catch (error) {
     console.error('Error checking for updates:', error.message);
+    return false;
   }
 }
 
@@ -28,10 +26,8 @@ function handleOptions(args) {
   }
 
   if (args.includes('-v') || args.includes('--version')) {
-    checkForUpdate().then(() => {
-      displayVersion();
-      process.exit(0);
-    });
+    displayVersion();
+    process.exit(0);
   }
 }
 
@@ -102,7 +98,9 @@ function askForOptions() {
 }
 
 async function startScript() {
-  await checkForUpdate();
+  if (await checkForUpdate()) {
+    console.log(`Yo! ⚡ 'ssspeedx' has an update available!`);
+  }
   messageToSend = readlineSync.question('Type your message to send => ');
   askForOptions();
 }
